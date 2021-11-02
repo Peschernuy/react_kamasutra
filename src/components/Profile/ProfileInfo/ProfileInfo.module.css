@@ -1,0 +1,12 @@
+
+
+.avatar{
+  max-height: 150px;
+  max-width: 150px;
+  position: absolute;
+
+}
+.avainfo{
+   margin-left: 180px;
+  margin-bottom: 50px;
+ }

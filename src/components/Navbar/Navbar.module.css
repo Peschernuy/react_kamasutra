@@ -1,0 +1,22 @@
+.nav {
+    grid-area: n;
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    color: azure;
+    padding-top: 20px;
+
+}
+
+.item a {
+    margin-left: 20px;
+    color: #fff;
+    font-style: italic;
+    font-size: 25px;
+    text-decoration: none;
+
+}
+
+.item a.active {
+    color: gold;
+}

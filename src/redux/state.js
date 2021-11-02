@@ -1,3 +1,4 @@
+import {rerenderEntireTree} from "../render";
 
 
 let state = {
@@ -15,7 +16,8 @@ let state = {
             {id:3, message: "Bark bark"},
             {id:4, message: "So loud!"},
             {id:5, message: "Fuck eah!!!"}
-        ]
+        ],
+
     },
 
     messagesPage: {
@@ -23,7 +25,8 @@ let state = {
             {id:1, message: 'Hi, how are you? ', like: 7},
             {id:2, message: 'Its my first post! ', like: 8},
             {id:3, message: 'Woof woof!!! ', like: 9}
-        ]
+        ],
+        newPostText: 'It Kamasutra'
 
     },
 
@@ -43,14 +46,23 @@ let state = {
 
 }
 
+window.state = state;
+
   export  let addPost = (postMessage) => {
 
             let newPost = {
              id: 4,
-             message: postMessage,
+             message: state.messagesPage.newPostText,
              like: 0
     };
     state.messagesPage.messagesData.push(newPost);
+      state.messagesPage.newPostText = '';
+    rerenderEntireTree(state);
+    }
+
+    export  let updateNewPostText = (newText) => {
+    state.messagesPage.newPostText = newText;
+    rerenderEntireTree(state);
     }
 
 

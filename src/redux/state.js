@@ -1,30 +1,31 @@
-import {rerenderEntireTree} from "../render";
-
+let rerenderEntireTree = () => {
+    console.log('State is changed')
+}
 
 let state = {
     profilePage: {
         dialogData: [
-            {id:1, name: "Charlie"},
-            {id:2, name: "Pricheska"},
-            {id:3, name: "Umka"},
-            {id:4, name: "Wader"},
-            {id:5, name: "Tina"}
+            {id: 1, name: "Charlie"},
+            {id: 2, name: "Pricheska"},
+            {id: 3, name: "Umka"},
+            {id: 4, name: "Wader"},
+            {id: 5, name: "Tina"}
         ],
-        messageContent:[
-            {id:1, message: "Hi"},
-            {id:2, message: "Greatings!"},
-            {id:3, message: "Bark bark"},
-            {id:4, message: "So loud!"},
-            {id:5, message: "Fuck eah!!!"}
+        messageContent: [
+            {id: 1, message: "Hi"},
+            {id: 2, message: "Greatings!"},
+            {id: 3, message: "Bark bark"},
+            {id: 4, message: "So loud!"},
+            {id: 5, message: "Fuck eah!!!"}
         ],
 
     },
 
     messagesPage: {
         messagesData: [
-            {id:1, message: 'Hi, how are you? ', like: 7},
-            {id:2, message: 'Its my first post! ', like: 8},
-            {id:3, message: 'Woof woof!!! ', like: 9}
+            {id: 1, message: 'Hi, how are you? ', like: 7},
+            {id: 2, message: 'Its my first post! ', like: 8},
+            {id: 3, message: 'Woof woof!!! ', like: 9}
         ],
         newPostText: 'It Kamasutra'
 
@@ -48,22 +49,26 @@ let state = {
 
 window.state = state;
 
-  export  let addPost = (postMessage) => {
+export const addPost = (postMessage) => {
 
-            let newPost = {
-             id: 4,
-             message: state.messagesPage.newPostText,
-             like: 0
+    let newPost = {
+        id: 4,
+        message: state.messagesPage.newPostText,
+        like: 0
     };
     state.messagesPage.messagesData.push(newPost);
-      state.messagesPage.newPostText = '';
-    rerenderEntireTree(state);
-    }
+    state.messagesPage.newPostText = '';
+    rerenderEntireTree();
+}
 
-    export  let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.messagesPage.newPostText = newText;
-    rerenderEntireTree(state);
-    }
+    rerenderEntireTree();
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
 
 
-export  default state;
+export default state;

@@ -19,24 +19,22 @@ const MyPosts = (props) => {
 
     }
 
-  return  <div className={m.wrapper}>
-      <h3>My posts</h3>
-      <div>
-          <div>
-              <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
-          </div>
-       <div>
-           <button onClick={ addPost }>Send</button>
-       </div>
-      </div>
-      <div className={m.posts}>
-          {messagesElements}
-      </div>
+    return <div className={m.wrapper}>
+        <h3>My posts</h3>
+        <div>
+            <div>
+                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
+            </div>
+            <div>
+                <button onClick={addPost}>Send</button>
+            </div>
+        </div>
+        <div className={m.posts}>
+            {messagesElements}
+        </div>
     </div>
-  
 
 
-  
 };
 
 export default MyPosts;

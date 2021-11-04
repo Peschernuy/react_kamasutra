@@ -43,31 +43,31 @@ let store = {
 
 
     },
+    _callSubscriber() {
+        console.log('state changing')
+    },
+
     getState() {
         return this._state;
     },
-    _rerenderEntireTree() {
-        console.log('State is changed')
-    },
-    _callSubscriber() {
-      console.log('state changing')
-    },
-    addPost() {
-        let newPost = {
-            id: 4,
-            message: this._state.messagesPage.newPostText,
-            like: 0
-        };
-        this._state.messagesPage.messagesData.push(newPost);
-        this._state.messagesPage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.messagesPage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        if(action.type ==='ADD-POST'){
+            let newPost = {
+                id: 4,
+                message: this._state.messagesPage.newPostText,
+                like: 0
+            };
+            this._state.messagesPage.messagesData.push(newPost);
+            this._state.messagesPage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type ==='UPDATE-NEW-POST-TEXT') {
+            this._state.messagesPage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 
 }

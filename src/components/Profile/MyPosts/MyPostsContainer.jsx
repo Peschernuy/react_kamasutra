@@ -1,44 +1,34 @@
 import React from 'react';
-import m from './MyPosts.module.css';
-import Post from './Post/Post';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileReducer";
+import MyPosts from "./MyPosts";
+import StoreContext from "../../../StroreContext";
+
+
+const MyPostsContainer = () => {
+    return (
+        <StoreContext.Consumer>
+            {
+            (store) => {
+                let state = store.getState();
+                let addPost = () => {
+                    store.dispatch(addPostActionCreator());
+                };
+
+                let onPostChange = (text) => {
+                    let action = updateNewPostTextActionCreator(text);
+                    store.dispatch(action);
+                }
+                    return <MyPosts updateNewPostText={onPostChange}
+                                    addPost={addPost}
+                                    messagesData={state.messagesPage.messagesData}
+                                    newPostText={state.messagesPage.newPostText}/>
+                }
+            }
+        </StoreContext.Consumer>
+    )
+
+}
 
 
 
-const MyPosts = (props) => {
-
-    let messagesElements = props.messagesData.map(data => <Post message={data.message} like={data.like}/>);
-
-    let newPostElement = React.createRef();
-
-    let addPost = () => {
-      props.dispatch(addPostActionCreator());
-    };
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
-
-
-    }
-
-    return <div className={m.wrapper}>
-        <h3>My posts</h3>
-        <div>
-            <div>
-                <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
-            </div>
-            <div>
-                <button onClick={addPost}>Send</button>
-            </div>
-        </div>
-        <div className={m.posts}>
-            {messagesElements}
-        </div>
-    </div>
-
-
-};
-
-export default MyPosts;
+export default MyPostsContainer;

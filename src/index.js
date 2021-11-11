@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import  {Provider} from "./StroreContext";
+import  {Provider} from "react-redux"
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
 
     ReactDOM.render(
         <React.StrictMode>
@@ -23,11 +23,10 @@ let rerenderEntireTree = (state) => {
 }
 
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 });
 
 

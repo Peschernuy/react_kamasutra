@@ -7,8 +7,8 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
     let state = props.profilePage;
 
-    let dialogElements = state.dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
-    let messageElements = state.messageContent.map(data => <Message message={data.message} id={data.id}/>)
+    let dialogElements = state.dialogData.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>);
+    let messageElements = state.messageContent.map(data => <Message message={data.message} key={data.id} id={data.id}/>)
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
@@ -27,7 +27,8 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 <div>{messageElements}</div>
-                <div><textarea value={newMessageBody}
+                <div>
+                    <textarea value={newMessageBody}
                                onChange={onMewMessageChange}
                                placeholder="Enter your message"></textarea></div>
                 <div>

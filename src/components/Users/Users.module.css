@@ -10,3 +10,8 @@
   overflow: hidden;
 
 }
+
+.selectedPage{
+  font-weight: bold;
+
+}

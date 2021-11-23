@@ -12,7 +12,8 @@ import p from './ProfileInfo.module.css';
   return <div>
     {/*<img className={p.avatar} src='https://i.postimg.cc/JhVmbP4z/umka-ava.png' alt='avatar'/>*/}
     <div className={p.avainfo}>
-      <img src={props.profile.photos.small} /><br/>
+      {/*<img src={props.profile.photos.small} /><br/>*/}
+      <img src={props.profile.photos.large} /><br/>
       <div>{props.profile.userID} </div><br/>
       <h2>{props.profile.fullName} </h2><br/>
       <h3>{props.profile.lookingForAJob} </h3><br/>

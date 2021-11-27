@@ -10,3 +10,12 @@
    margin-left: 20px;
   margin-bottom: 50px;
  }
+
+.status{
+    background: green;
+}
+
+.input{
+    background: red;
+
+}

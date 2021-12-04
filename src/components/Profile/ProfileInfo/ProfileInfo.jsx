@@ -2,6 +2,7 @@
 import p from './ProfileInfo.module.css';
  import Preloader from "../../common/preloader/preloader";
  import ProfileStatus from "./ProfileStatus";
+ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 
@@ -17,7 +18,7 @@ import p from './ProfileInfo.module.css';
     <div className={p.avainfo}>
       {/*<img src={props.profile.photos.small} /><br/>*/}
       <img src={props.profile.photos.large} /><br/>
-        <ProfileStatus status ={props.status} updateStatus={props.updateStatus}/>
+        <ProfileStatusWithHooks status ={props.status} updateStatus={props.updateStatus}/>
       <div>{props.profile.userID} </div><br/>
       <h3>{props.profile.aboutMe} </h3><br/>
       <h2>{props.profile.fullName} </h2><br/>

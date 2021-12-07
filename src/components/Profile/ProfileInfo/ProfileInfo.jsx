@@ -6,9 +6,9 @@ import p from './ProfileInfo.module.css';
 
 
 
- const ProfileInfo = (props) => {
+ const ProfileInfo = ({profile,status, updateStatus}) => {
 
-  if(!props.profile) {
+  if(!profile) {
     return <Preloader />
   }
 
@@ -17,20 +17,20 @@ import p from './ProfileInfo.module.css';
     {/*<img className={p.avatar} src='https://i.postimg.cc/JhVmbP4z/umka-ava.png' alt='avatar'/>*/}
     <div className={p.avainfo}>
       {/*<img src={props.profile.photos.small} /><br/>*/}
-      <img src={props.profile.photos.large} /><br/>
-        <ProfileStatusWithHooks status ={props.status} updateStatus={props.updateStatus}/>
-      <div>{props.profile.userID} </div><br/>
-      <h3>{props.profile.aboutMe} </h3><br/>
-      <h2>{props.profile.fullName} </h2><br/>
-      <h3>{props.profile.lookingForAJob} </h3><br/>
-      <h3>{props.profile.lookingForAJobDescription} </h3><br/>
-      <div>{props.profile.contacts.github} </div><br/>
-      <div>{props.profile.contacts.vk} </div><br/>
-      <div>{props.profile.contacts.facebook} </div><br/>
-      <div>{props.profile.contacts.instagram} </div><br/>
-      <div>{props.profile.contacts.website} </div><br/>
-      <div>{props.profile.contacts.youtube} </div><br/>
-      <div>{props.profile.contacts.mainLink} </div><br/>
+      <img src={profile.photos.large} /><br/>
+        <ProfileStatusWithHooks status ={status} updateStatus={updateStatus}/>
+      <div>{profile.userID} </div><br/>
+      <h3>{profile.aboutMe} </h3><br/>
+      <h2>{profile.fullName} </h2><br/>
+      <h3>{profile.lookingForAJob} </h3><br/>
+      <h3>{profile.lookingForAJobDescription} </h3><br/>
+      <div>{profile.contacts.github} </div><br/>
+      <div>{profile.contacts.vk} </div><br/>
+      <div>{profile.contacts.facebook} </div><br/>
+      <div>{profile.contacts.instagram} </div><br/>
+      <div>{profile.contacts.website} </div><br/>
+      <div>{profile.contacts.youtube} </div><br/>
+      <div>{profile.contacts.mainLink} </div><br/>
 
       </div>
 

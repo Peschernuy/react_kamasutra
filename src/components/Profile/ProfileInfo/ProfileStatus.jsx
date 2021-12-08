@@ -32,10 +32,7 @@ class ProfileStatus extends React.Component {
         this.setState({
             status: this.props.status
         });
-
-
     }
-
 
     render() {
 

@@ -11,7 +11,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState = {
     users: [],
-    pageSize: 50,
+    pageSize: 100,
     totalUsersCount: 0,
     currentPage: 7,
     isFetching: true,
@@ -58,7 +58,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
 
@@ -101,15 +101,15 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
     dispatch(toggleFollowingProgress(false, userId));
 }
 
-export const follow = (userId) => {
+export const follow =  (userId) => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), followSuccess);
+        await followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), followSuccess);
     }
 }
 
-export const unfollow = (userId) => {
+export const unfollow =  (userId) => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), unfollowSuccess);
+        await followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), unfollowSuccess);
     }
 }
 

@@ -4,12 +4,21 @@
 .pageNumber{
     padding: 2px;
     border: 1px solid grey;
+    cursor: pointer;
+
+}
+.pageNumber:hover{
+   background: #222222;
+    color: white;
+
 }
 .pageNumber .selectedPage {
     font-weight: bold;
     border-color: black;
+
 }
 .btn{
     background: black;
     color: white;
+    cursor: pointer;
 }

@@ -24,9 +24,8 @@ let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostF
 
 
 const MyPosts = React.memo(props => {
-    console.log("Render yo")
 
-    let messagesElements = props.messagesData.map(data => <Post message={data.message} like={data.like}/>);
+    let messagesElements = props.messagesData.map(data => <Post key={data.id} message={data.message} like={data.like}/>);
 
     let newPostElement = React.createRef();
 

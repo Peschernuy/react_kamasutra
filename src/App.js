@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, BrowserRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, BrowserRouter, Route, withRouter, Switch, Redirect} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -31,12 +31,16 @@ class App extends React.Component {
                 <Navbar/>
                 <React.Suspense fallback={<Preloader/>}>
                     <div className='app-wrapper-content'>
-                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/music' render={() => <Music/>}/>
-                        <Route path='/settings' render={() => <Settings/>}/>
-                        <Route path='/login' render={() => <Login/>}/>
+                        <Switch>
+                            <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
+                            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/music' render={() => <Music/>}/>
+                            <Route path='/settings' render={() => <Settings/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
+                            <Route path='*' render={() => <div>404 NOT FOUND</div>}/>
+                        </Switch>
                     </div>
                 </React.Suspense>
             </div>
@@ -53,11 +57,11 @@ let AppContainer = compose(
     connect(mapStateToProps, {initializeApp}))(App);
 
 const SamuraiJsApp = (props) => {
-    return <HashRouter >
+    return <BrowserRouter>
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
 }
 
 export default SamuraiJsApp
